@@ -1,0 +1,1285 @@
+import java.util.*;
+import java.net.*;
+import java.io.*;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
+
+
+public class GoogleSheetsAPI {
+
+	
+
+	public static String Costco_price_return(String costco) {
+
+		print("running...");
+
+		Document document;
+
+		int i = 0;
+
+		try {
+
+			// Get Document object after parsing the html from given url.
+
+			
+
+			document = Jsoup.connect(costco).get();
+
+			
+
+			// String title = document.title(); //Get title
+
+			// print(" Title: " + title); //Print title.
+
+			Elements price = document.select(".price"); // Get price
+
+			
+
+			// String text = document.select("div").first().text();
+
+			// System.out.println(text);
+
+			
+
+			String output = price.get(i).text();
+
+			//for (int i = 0; i <= 1; i++) {
+
+			//}
+
+			// String html = Jsoup.connect(url).get().html();
+
+			// System.out.print(html);
+
+			print(output);
+
+			return output;
+
+		} catch (IOException e) {
+
+			e.printStackTrace();
+
+			return "-1";
+
+		}
+
+	}
+
+	
+
+	public static String Walmart_price_return(String walmart) {
+
+		print("running...");
+
+		Document document;
+
+		String output = null;
+
+		try {
+
+			// Get Document object after parsing the html from given url.
+
+			
+
+			document = Jsoup.connect(walmart).get();
+
+			
+
+			// String title = document.title(); //Get title
+
+			// print(" Title: " + title); //Print title.
+
+			Elements price = document.select(".price-group:contains($)"); // Get price
+
+			
+
+			// String text = document.select("div").first().text();
+
+			// System.out.println(text);
+
+			for (int i = 0; i < 1; i++) {
+
+				output= (price.get(i).text());
+
+			}
+
+			//}
+
+			//String html = Jsoup.connect(url).get().html();
+
+			//System.out.print(html);
+
+			print(output);
+
+			return output;
+
+		} catch (IOException e) {
+
+			e.printStackTrace();
+
+			return "-1";
+
+		}
+
+	}
+
+
+
+	public static String Nordstrom_price_return(String store) {
+
+		print("running...");
+
+		Document document;
+
+		int i = 0;
+
+		try {
+
+			// Get Document object after parsing the html from given url.
+
+
+
+			document = Jsoup.connect(store).get();
+
+
+
+			Elements price = document.select(".priceLine_FlmKX sale_Z1msUvH:contains($)"); // Get price
+
+			
+
+			String output = price.get(i).text();
+
+			
+
+			return output;
+
+		} catch (IOException e) {
+
+			e.printStackTrace();
+
+			return "-1";
+
+		}
+
+	}
+
+
+
+public static String Ikea_price_return(String store) {
+
+		print("running...");
+
+		Document document;
+
+		String output = null;
+
+		int i = 0;
+
+		try {
+
+			// Get Document object after parsing the html from given url.
+
+
+
+			document = Jsoup.connect(store).get();
+
+
+
+			// String title = document.title(); //Get title
+
+			// print(" Title: " + title); //Print title.
+
+			Elements price = document.select("contains($)"); // Get price
+
+			System.out.println(price.size());
+
+			if(price.size() != 0) {
+
+			output = price.get(i).text();
+
+			} else {
+
+				output = "-1";
+
+			}
+
+			//for (int i = 0; i <= 1; i++) {
+
+			//}
+
+			// String html = Jsoup.connect(url).get().html();
+
+			// System.out.print(html);
+
+			System.out.println(output);
+
+			return output;
+
+		} catch (IOException e) {
+
+			e.printStackTrace();
+
+			return "-1";
+
+		}
+
+	}
+
+
+
+public static String Macys_price_return(String store) {
+
+		print("running...");
+
+		Document document;
+
+		int i = 0;
+
+		try {
+
+			// Get Document object after parsing the html from given url.
+
+
+
+			document = Jsoup.connect(store).get();
+
+
+
+			// String title = document.title(); //Get title
+
+			// print(" Title: " + title); //Print title.
+
+			Elements price = document.select(".regular:contains($)"); // Get price
+
+			//Elements address = document.select("span[itemprop]:contains($)");
+
+
+
+			// String text = document.select("div").first().text();
+
+			// System.out.println(text);
+
+			String output = price.get(i).text();
+
+			//for (int i = 0; i <= 1; i++) {
+
+			//}
+
+			// String html = Jsoup.connect(url).get().html();
+
+			// System.out.print(html);
+
+
+
+			return output;
+
+		} catch (IOException e) {
+
+			e.printStackTrace();
+
+			return "-1";
+
+		}
+
+	}
+
+
+
+/*
+
+	public static String HomeDepot_price_return(String store) {
+
+		print("running...");
+
+		Document document;
+
+		int i = 0;
+
+		try {
+
+			// Get Document object after parsing the html from given url.
+
+
+
+			document = Jsoup.connect(store).get();
+
+
+
+			// String title = document.title(); //Get title
+
+			// print(" Title: " + title); //Print title.
+
+			Elements price = document.select(".price:contains($)"); // Get price
+
+			Elements address = document.select("span[itemprop]:contains(price)");
+
+
+
+			// String text = document.select("div").first().text();
+
+			// System.out.println(text);
+
+			String output = price.get(i).text();
+
+			//for (int i = 0; i <= 1; i++) {
+
+			//}
+
+			// String html = Jsoup.connect(url).get().html();
+
+			// System.out.print(html);
+
+
+
+			return output;
+
+		} catch (IOException e) {
+
+			e.printStackTrace();
+
+			return "-1";
+
+		}
+
+	}
+
+*/	
+
+	//public static void url(String[] args) throws Exception {
+
+	public static void url() {	
+
+		System.out.println("Enter product: ");
+
+
+
+		Scanner input = new Scanner(System.in);
+
+		String p = input.nextLine();
+
+
+
+		//String HomeDepot = homeDepot(p);
+
+		//String HomeDepotD = "5.1 mi";
+
+		//String HomeDepotT = "12 min";
+
+		//String HomeDepotP = HomeDepot_price_return(HomeDepot);
+
+		//String Target = target(p);
+
+		//String TargetD = "5.5 mi";
+
+		//String TargetT = "12 min";
+
+		//String TargetP = Target_price_return(Target);
+
+		String Walmart = walmart(p);
+
+		String WalmartD = "5.3 mi";
+
+		String WalmartT = "10 min";
+
+		String WalmartP = Walmart_price_return(Walmart);
+
+	
+
+		
+		/*
+		String Ikea = ikea(p);
+		String IkeaD = "38 mi";
+
+		String IkeaT = "47 min";
+
+		String IkeaP = Ikea_price_return(Ikea);
+
+		*/
+
+		String Costco = costco(p);
+
+		String CostcoD = "6.8 mi";
+
+		String CostcoT = "12 min";
+
+		String CostcoP = Costco_price_return(Costco);
+
+		/*
+
+		String Macys = macys(p);
+
+		String MacysD = "6.3 mi";
+
+		String MacysT = "11 min";
+
+		String MacysP = Macys_price_return(Macys);
+
+		String Kmart = kmart(p);
+
+		String KmartD = "14.3 mi";
+
+		String KmartT = "21 min";
+
+		String KmartP = Kmart_price_return(Kmart);
+
+		String Nordstrom = nordstrom(p);
+
+		String NordstromD = "5.9 mi";
+
+		String NordstromT = "11 min";
+
+		String NordstromP = Nordstrom_price_return(Nordstrom);
+
+		String Lowes = lowes(p);
+
+		String LowesD = "4.6 mi";
+
+		String LowesT = "10 min";
+
+		String LowesP = Lowes_price_return(Lowes);
+
+		*/
+
+		//String[ ] times = { WalmartT, IkeaT, CostcoT, MacysT, KmartT, NordstromT, LowesT};
+
+		String[ ] times = { WalmartT, CostcoT};
+
+		sortStringBubble (times);
+
+        //for ( int k = 0;  k < 9;  k++ )
+
+           //System.out.println( times [ k ] );
+
+        
+
+        //String[ ] prices = { WalmartP, IkeaP, CostcoP, MacysP, KmartP, NordstromP, LowesP};
+
+        
+
+		String WalmartP2 = WalmartP.substring(1, WalmartP.length()-1);
+
+		String CostcoP2 = CostcoP.substring(1, CostcoP.length()-1);
+
+		String[ ] prices = { WalmartP2, CostcoP2};
+
+        sortStringBubble (prices);
+
+        //for ( int k = 0;  k < 9;  k++ )
+
+           //System.out.println( prices [ k ] );
+
+        
+
+        print("\nNEAREST LOCATIONS ");
+
+    	if(times[0]==CostcoT)
+
+    	{
+
+    		print("Costco: ");
+
+    		System.out.println(CostcoD);
+
+    		System.out.println(CostcoT);
+
+    		print("Walmart: ");
+
+    		System.out.println(WalmartD);
+
+    		System.out.println(WalmartT);
+
+    	}
+
+    	else if(times[0]==WalmartT)
+
+    	{
+
+    		print("Walmart: ");
+
+    		System.out.println(WalmartD);
+
+    		System.out.println(WalmartT);
+
+    		print("Costco: ");
+
+    		System.out.println(CostcoD);
+
+    		System.out.println(CostcoT);
+
+    		
+
+    	}
+
+    	print("\nLOWEST PRICES ");
+
+    	if(prices[0]==WalmartP2)
+
+    	{
+
+    		print("Walmart: ");
+
+    		System.out.println(WalmartP);
+
+    		print("Costco: ");
+
+    		System.out.println(CostcoP);
+
+    		
+
+    	}
+
+    	else if(prices[0]==CostcoP2)
+
+    	{
+
+    		print("Costco: ");
+
+    		System.out.println(CostcoP);
+
+    		print("Walmart: ");
+
+    		System.out.println(WalmartP);
+
+    		
+
+    	}
+
+	}
+
+
+
+	public static void sortStringBubble(String x[]) {
+
+		int j;
+
+		boolean flag = true; // will determine when the sort is finished
+
+		String temp;
+
+
+
+		while (flag) {
+
+			flag = false;
+
+			for (j = 0; j < x.length - 1; j++) {
+
+				if (x[j].compareToIgnoreCase(x[j + 1]) > 0) { // ascending sort
+
+					temp = x[j];
+
+					x[j] = x[j + 1]; // swapping
+
+					x[j + 1] = temp;
+
+					flag = true;
+
+				}
+
+			}
+
+		}
+
+	}
+
+
+
+	public static void print(String string) {
+
+		System.out.println(string);
+
+	}
+
+	
+
+	public static String Kmart_price_return(String store) {
+
+		print("running...");
+
+		Document document;
+
+		int i = 0;
+
+		try {
+
+			// Get Document object after parsing the html from given url.
+
+
+
+			document = Jsoup.connect(store).get();
+
+
+
+			// String title = document.title(); //Get title
+
+			// print(" Title: " + title); //Print title.
+
+			Elements price = document.select("card-price ng-binding ng-scope card-sale-price card-price-orig:contains($)"); // Get price
+
+			//Elements address = document.select("span[itemprop]:contains(price)");
+
+
+
+			// String text = document.select("div").first().text();
+
+			// System.out.println(text);
+
+			String output = price.get(i).text();
+
+			//for (int i = 0; i <= 1; i++) {
+
+			//}
+
+			// String html = Jsoup.connect(url).get().html();
+
+			// System.out.print(html);
+
+
+
+			return output;
+
+		} catch (IOException e) {
+
+			e.printStackTrace();
+
+			return "-1";
+
+		}
+
+	}
+
+
+
+
+
+public static String Lowes_price_return(String store) {
+
+		print("running...");
+
+		Document document;
+
+		int i = 0;
+
+		try {
+
+			// Get Document object after parsing the html from given url.
+
+
+
+			document = Jsoup.connect(store).get();
+
+
+
+			// String title = document.title(); //Get title
+
+			// print(" Title: " + title); //Print title.
+
+			Elements price = document.select("h5 js-price met-product-price art-pl-priceRange0:contains($)"); // Get price
+
+			//Elements address = document.select("span[itemprop]:contains(price)");
+
+
+
+			// String text = document.select("div").first().text();
+
+			// System.out.println(text);
+
+			String output = price.get(i).text();
+
+			//for (int i = 0; i <= 1; i++) {
+
+			//}
+
+			// String html = Jsoup.connect(url).get().html();
+
+			// System.out.print(html);
+
+
+
+			return output;
+
+		} catch (IOException e) {
+
+			e.printStackTrace();
+
+			return "-1";
+
+		}
+
+	}
+
+	public static String nordstrom(String product) {
+
+		String url = "https://shop.nordstrom.com/sr?origin=keywordsearch&keyword=";
+
+		int spaces = 0;
+
+		char lastChar = product.charAt(product.length() - 1);
+
+		if (lastChar == ' ') {
+
+			product = product.substring(0, product.length() - 1);
+
+		}
+
+
+
+		for (int i = 0; i < product.length(); i++) {
+
+			if (product.charAt(i) != ' ') {
+
+				url += product.charAt(i);
+
+			} else {
+
+				url += "+";
+
+			}
+
+		}
+
+
+
+		char lastURLchar = url.charAt(url.length() - 1);
+
+		if (lastURLchar == '0') {
+
+			url = url.substring(0, url.length() - 5);
+
+		}
+
+		System.out.println(url);
+
+		return url;
+
+
+
+	}
+
+
+
+	public static String homeDepot(String product) {
+
+		String url = "https://www.homedepot.com/s/";
+
+		int spaces = 0;
+
+		char lastChar = product.charAt(product.length() - 1);
+
+		if (lastChar == ' ') {
+
+			product = product.substring(0, product.length() - 1);
+
+		}
+
+
+
+		for (int i = 0; i < product.length(); i++) {
+
+			if (product.charAt(i) != ' ') {
+
+				url += product.charAt(i);
+
+			} else {
+
+				url += "%2520";
+
+			}
+
+		}
+
+
+
+		char lastURLchar = url.charAt(url.length() - 1);
+
+		if (lastURLchar == '0') {
+
+			url = url.substring(0, url.length() - 5);
+
+		}
+
+		System.out.println(url);
+
+		return url;
+
+
+
+	}
+
+
+
+	public static String lowes(String product) {
+
+		String url = "https://www.lowes.com/search?searchTerm=";
+
+		int spaces = 0;
+
+		char lastChar = product.charAt(product.length() - 1);
+
+		if (lastChar == ' ') {
+
+			product = product.substring(0, product.length() - 1);
+
+		}
+
+
+
+		for (int i = 0; i < product.length(); i++) {
+
+			if (product.charAt(i) != ' ') {
+
+				url += product.charAt(i);
+
+			} else {
+
+				url += "+";
+
+			}
+
+		}
+
+
+
+		char lastURLchar = url.charAt(url.length() - 1);
+
+		if (lastURLchar == '0') {
+
+			url = url.substring(0, url.length() - 5);
+
+		}
+
+		System.out.println(url);
+
+		return url;
+
+
+
+	}
+
+
+
+	public static String target(String product) {
+
+		String url = "https://www.target.com/s?searchTerm=";
+
+		int spaces = 0;
+
+		char lastChar = product.charAt(product.length() - 1);
+
+		if (lastChar == ' ') {
+
+			product = product.substring(0, product.length() - 1);
+
+		}
+
+
+
+		for (int i = 0; i < product.length(); i++) {
+
+			if (product.charAt(i) != ' ') {
+
+				url += product.charAt(i);
+
+			} else {
+
+				url += "+";
+
+			}
+
+		}
+
+
+
+		char lastURLchar = url.charAt(url.length() - 1);
+
+		if (lastURLchar == '0') {
+
+			url = url.substring(0, url.length() - 5);
+
+		}
+
+		System.out.println(url);
+
+		return url;
+
+
+
+	}
+
+
+
+	public static String walmart(String product) {
+
+		String url = "https://www.walmart.com/search/?query=";
+
+		int spaces = 0;
+
+		char lastChar = product.charAt(product.length() - 1);
+
+		if (lastChar == ' ') {
+
+			product = product.substring(0, product.length() - 1);
+
+		}
+
+
+
+		for (int i = 0; i < product.length(); i++) {
+
+			if (product.charAt(i) != ' ') {
+
+				url += product.charAt(i);
+
+			} else {
+
+				url += "%20";
+
+			}
+
+		}
+
+
+
+		char lastURLchar = url.charAt(url.length() - 1);
+
+		if (lastURLchar == '0') {
+
+			url = url.substring(0, url.length() - 5);
+
+		}
+
+		System.out.println(url);
+
+		return url;
+
+
+
+	}
+
+
+
+	public static String ikea(String product) {
+
+		String url = "https://www.ikea.com/ms/en_US/usearch/?query=";
+
+		int spaces = 0;
+
+		char lastChar = product.charAt(product.length() - 1);
+
+		if (lastChar == ' ') {
+
+			product = product.substring(0, product.length() - 1);
+
+		}
+
+
+
+		for (int i = 0; i < product.length(); i++) {
+
+			if (product.charAt(i) != ' ') {
+
+				url += product.charAt(i);
+
+			} else {
+
+				url += "%20";
+
+			}
+
+		}
+
+
+
+		char lastURLchar = url.charAt(url.length() - 1);
+
+		if (lastURLchar == '0') {
+
+			url = url.substring(0, url.length() - 5);
+
+		}
+
+		System.out.println(url);
+
+		return url;
+
+
+
+	}
+
+
+
+	public static String costco(String product) {
+
+		String url = "https://www.costco.com/CatalogSearch?storeId=10301&catalogId=10701&langId=-1&keyword=";
+
+		int spaces = 0;
+
+		char lastChar = product.charAt(product.length() - 1);
+
+		if (lastChar == ' ') {
+
+			product = product.substring(0, product.length() - 1);
+
+		}
+
+
+
+		for (int i = 0; i < product.length(); i++) {
+
+			if (product.charAt(i) != ' ') {
+
+				url += product.charAt(i);
+
+			} else {
+
+				url += "%20";
+
+			}
+
+		}
+
+
+
+		char lastURLchar = url.charAt(url.length() - 1);
+
+		if (lastURLchar == '0') {
+
+			url = url.substring(0, url.length() - 5);
+
+		}
+
+		System.out.println(url);
+
+		return url;
+
+
+
+	}
+
+
+
+	public static String bestBuy(String product) {
+
+		String url = "https://www.bestbuy.com/site/searchpage.jsp?_dyncharset=UTF-8&_dynSessConf=&id=pcat17071&type=page&sc=Global&cp=1&nrp=15&sp=&qp=&list=n&iht=y&usc=All+Categories&ks=960&fs=saas&saas=saas&keys=keys&st=";
+
+		int spaces = 0;
+
+		char lastChar = product.charAt(product.length() - 1);
+
+		if (lastChar == ' ') {
+
+			product = product.substring(0, product.length() - 1);
+
+		}
+
+
+
+		for (int i = 0; i < product.length(); i++) {
+
+			if (product.charAt(i) != ' ') {
+
+				url += product.charAt(i);
+
+			} else {
+
+				url += "%20";
+
+			}
+
+		}
+
+
+
+		char lastURLchar = url.charAt(url.length() - 1);
+
+		if (lastURLchar == '0') {
+
+			url = url.substring(0, url.length() - 5);
+
+		}
+
+		System.out.println(url);
+
+		return url;
+
+
+
+	}
+
+
+
+	public static String macys(String product) {
+
+		String url = "https://www.macys.com/shop/featured/";
+
+		int spaces = 0;
+
+		char lastChar = product.charAt(product.length() - 1);
+
+		if (lastChar == ' ') {
+
+			product = product.substring(0, product.length() - 1);
+
+		}
+
+
+
+		for (int i = 0; i < product.length(); i++) {
+
+			if (product.charAt(i) != ' ') {
+
+				url += product.charAt(i);
+
+			} else {
+
+				url += "-";
+
+			}
+
+		}
+
+
+
+		char lastURLchar = url.charAt(url.length() - 1);
+
+		if (lastURLchar == '0') {
+
+			url = url.substring(0, url.length() - 5);
+
+		}
+
+		System.out.println(url);
+
+		return url;
+
+
+
+	}
+
+
+
+	public static String kmart(String product) {
+
+		String url = "https://www.kmart.com/search=";
+
+		int spaces = 0;
+
+		char lastChar = product.charAt(product.length() - 1);
+
+		if (lastChar == ' ') {
+
+			product = product.substring(0, product.length() - 1);
+
+		}
+
+
+
+		for (int i = 0; i < product.length(); i++) {
+
+			if (product.charAt(i) != ' ') {
+
+				url += product.charAt(i);
+
+			} else {
+
+				url += "%20";
+
+			}
+
+		}
+
+
+
+		char lastURLchar = url.charAt(url.length() - 1);
+
+		if (lastURLchar == '0') {
+
+			url = url.substring(0, url.length() - 5);
+
+		}
+
+		System.out.println(url);
+
+		return url;
+
+	}
+
+
+
+public static void main(String[] args) {
+
+	url();
+
+	
+
+	/*
+
+	print("1");
+
+	System.out.println("running...");
+
+	Document document;
+
+	String output = null;
+
+	String walmart = "https://www.walmart.com/search/?query=pillow";
+
+	try {
+
+		print("2");
+
+		// Get Document object after parsing the html from given url.
+
+
+
+		document = Jsoup.connect(walmart).get();
+
+		print("3");
+
+		// String title = document.title(); //Get title
+
+		// print(" Title: " + title); //Print title.
+
+		Elements price = document.select(".price-group:contains($)"); // Get price
+
+		print("4");
+
+		// String text = document.select("div").first().text();
+
+		// System.out.println(text);
+
+		for (int i = 0; i < 1; i++) {
+
+			output= (price.get(i).text());
+
+		}
+
+		print("5");
+
+		//}
+
+		String html = Jsoup.connect(walmart).get().html();
+
+		print("6");
+
+		System.out.print(html);
+
+		print("7");
+
+	} catch (IOException e) {
+
+		e.printStackTrace();
+
+		System.out.println("-1"); 
+
+	}
+
+	*/
+
+}
+
+}
+
+
